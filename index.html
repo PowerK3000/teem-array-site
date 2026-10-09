@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<title>Teem Array: AI that does the work, with results you can verify</title>
+<meta name="description" content="Constellation is a platform that puts AI to work on your own data, on your own hardware, and returns results you can verify. Every claim is checked against your own records and documents, every step is logged, and a person signs off.">
+<meta property="og:title" content="Teem Array: AI that does the work, with results you can verify">
+<meta property="og:description" content="A platform that puts AI to work on your own data, on your own hardware, with results you can verify.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg fill='%230F5C63'%3E%3Ccircle cx='3' cy='12' r='1.3'/%3E%3Ccircle cx='7' cy='6' r='1.3'/%3E%3Ccircle cx='12' cy='9.5' r='1.3'/%3E%3Ccircle cx='13' cy='3' r='1.3'/%3E%3C/g%3E%3Cpath d='M3.8 10.9 6.3 7.1M8.2 6.5l2.7 2.3M12.2 8.3l.6-3.9' stroke='%230F5C63' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+@font-face { font-family: "Newsreader"; src: url("fonts/newsreader-latin-wght-normal.woff2") format("woff2"); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Public Sans"; src: url("fonts/public-sans-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+:root { --paper: #FBF8F1; --sunk: #F1EDE2; --ink: #1F2328; --muted: #5B6470; --rule: #D9D3C5; --teal: #0F5C63; --on-teal: #FFFFFF; --amber-tint: #FBEFD9; color-scheme: light dark; }
+@media (prefers-color-scheme: dark) { :root { --paper: #1B1A17; --sunk: #24231F; --ink: #ECE8DD; --muted: #A9A89E; --rule: #3A3832; --teal: #4FB3BC; --on-teal: #10201F; --amber-tint: #3A2D12; } }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+a { color: var(--teal); text-underline-offset: 3px; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+header { padding: 28px 0 8px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--teal); text-decoration: none; font: 600 20px/1 "Newsreader", Georgia, serif; }
+.brand svg { width: 26px; height: 26px; fill: currentColor; stroke: currentColor; stroke-width: 1.2; stroke-linecap: round; }
+.brand svg circle { stroke: none; }
+.brand span { color: var(--ink); }
+h1 { font: 600 clamp(32px, 6vw, 48px)/1.12 "Newsreader", Georgia, serif; margin: 56px 0 18px; letter-spacing: -0.01em; }
+h2 { font: 600 26px/1.25 "Newsreader", Georgia, serif; margin: 56px 0 12px; }
+p { margin: 0 0 16px; max-width: 64ch; }
+.lede { font-size: 20px; color: var(--ink); }
+.muted { color: var(--muted); }
+ol.steps { list-style: none; counter-reset: s; padding: 0; margin: 20px 0 0; display: grid; gap: 14px; }
+ol.steps li { counter-increment: s; border-left: 3px solid var(--teal); padding: 2px 0 2px 16px; }
+ol.steps li strong { display: block; }
+.box { background: var(--sunk); border: 1px solid var(--rule); border-radius: 8px; padding: 18px 20px; }
+.box ul { margin: 8px 0 0; padding-left: 20px; }
+.box li { margin: 4px 0; }
+.cta { display: inline-block; background: var(--teal); color: var(--on-teal); text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 6px; margin-top: 8px; }
+.cta:focus-visible, a:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+.sample { margin-top: 12px; display: inline-block; }
+footer { margin: 72px 0 40px; padding-top: 20px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--muted); }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="brand" href="#top" aria-label="Teem Array">
+    <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3" cy="12" r="1.3"/><circle cx="7" cy="6" r="1.3"/><circle cx="12" cy="9.5" r="1.3"/><circle cx="13" cy="3" r="1.3"/><path d="M3.8 10.9 6.3 7.1M8.2 6.5l2.7 2.3M12.2 8.3l.6-3.9" fill="none"/></svg>
+    <span>Teem Array</span>
+  </a>
+</div></header>
+
+<main id="top"><div class="wrap">
+  <h1>AI that does the work, with results you can verify.</h1>
+  <p class="lede">Constellation is a platform that puts AI to work on your own data, on your own hardware. Every answer shows its sources, code checks every claim against your own records and documents, every step is logged and replayable, and a person signs off.</p>
+  <a class="cta" href="mailto:murdic.work@gmail.com?subject=A%20conversation%20about%20Constellation">Request a conversation</a>
+
+  <h2>How it works</h2>
+  <ol class="steps">
+    <li><strong>Ask in plain language.</strong> The agent asks you when it is unsure and uses the documents and records in your workspace.</li>
+    <li><strong>The agent does the job.</strong> It works on your own hardware, so your data stays inside your environment.</li>
+    <li><strong>Code checks every claim.</strong> Each quoted passage and each cited record entry is checked against your own files. A claim that cannot be found is marked or removed, not believed.</li>
+    <li><strong>A person decides.</strong> Doubtful findings are held for a human, every step is written to a log that cannot be edited without it showing, and any result can be re-checked independently.</li>
+  </ol>
+
+  <h2>What we have built first</h2>
+  <p>The first agent reviews access to patient records against a hospital's own privacy policies and produces an evidence report that an examiner could read. Separate workspaces keep each job's documents, data and people apart, and more agents can be set up as new jobs need them.</p>
+  <p>We offer a six-week paid trial on a hospital's de-identified data, delivered with a partner firm where possible. You see measured results on your own cases, including where it falls short, before you commit to anything more.</p>
+  <a class="sample" href="sample-evidence-report.html">See a sample evidence report</a> <span class="muted">(scripted example on synthetic data)</span>
+
+  <h2>What we do not claim yet</h2>
+  <div class="box">
+    <ul>
+      <li>Our results so far are on synthetic test data. We have not yet measured the system on any organization's real data.</li>
+      <li>We are an early-stage company with no customers yet, and we are not certified (no SOC 2 yet).</li>
+      <li>One agent is built and tested. Others come as customers need them, and each earns trust separately.</li>
+      <li>A person always decides. Nothing here is autonomous.</li>
+    </ul>
+  </div>
+
+  <h2>Talk to us</h2>
+  <p>If you run privacy, compliance or security at a hospital or a firm that serves hospitals, we would value fifteen minutes of your advice.</p>
+  <a class="cta" href="mailto:murdic.work@gmail.com?subject=A%20conversation%20about%20Constellation">Email Kayden Murdic</a>
+</div></main>
+
+<footer><div class="wrap">Teem Array Inc. &middot; Constellation is a product of Teem Array Inc. &middot; This page makes no performance claims about real-world use.</div></footer>
+</body>
+</html>
