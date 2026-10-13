@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Sample evidence report | Teem Array</title>
-<!-- wrapped-by-site: context header, intro and footer added around the unmodified report body -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="color-scheme" content="light dark">
@@ -21,56 +20,30 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
 table{border-collapse:collapse;width:100%;font-size:14px}th,td{border-bottom:1px solid var(--rule);text-align:left;padding:6px 8px;vertical-align:top}
 footer{margin-top:40px;color:var(--muted);font-size:13px}
 @media print{body{background:#fff}main{padding:0}.item{page-break-inside:avoid}}
-
-@font-face{font-family:"Newsreader";src:url("fonts/newsreader-latin-wght-normal.woff2") format("woff2");font-weight:200 800;font-display:swap}
-@font-face{font-family:"Public Sans";src:url("fonts/public-sans-latin-wght-normal.woff2") format("woff2");font-weight:100 900;font-display:swap}
-h1,h2{font-family:"Newsreader",Georgia,serif}h3{font-family:"Public Sans",system-ui,sans-serif}
-:root{--card:#fff;--teal-soft:#E1EEEE;--on-teal:#fff}
-.sitebar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
-.sitebar .in{max-width:1040px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:inline-flex;align-items:center;gap:10px;color:var(--teal);text-decoration:none;font:600 20px/1 "Newsreader",Georgia,serif}
-.brand svg{width:26px;height:26px;fill:currentColor;stroke:currentColor;stroke-width:1.2;stroke-linecap:round}.brand svg circle{stroke:none}.brand span{color:var(--ink)}
-.sitebar nav{display:flex;gap:18px;align-items:center;font-size:14.5px}.sitebar nav a{color:var(--muted);text-decoration:none}.sitebar nav a:hover{color:var(--ink)}
-.sitebar nav .pill{background:var(--teal);color:var(--on-teal);padding:7px 14px;border-radius:6px;font-weight:600}
-a{color:var(--teal)}
-.ctx{max-width:860px;margin:28px auto 0;padding:0 20px}
-.ctx .box{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--teal);border-radius:8px;padding:18px 22px}
-.ctx h2{margin:0 0 8px;border:0;padding:0;font-size:21px}
-.ctx p{margin:0 0 10px}.ctx ul{margin:8px 0 0;padding-left:20px}.ctx li{margin:5px 0}
-.ctx .key{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:13.5px}
-.ctx .key span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;border:1px solid var(--rule)}
-.ctx .key .g::before{background:var(--green)}.ctx .key .a::before{background:var(--amber)}.ctx .key .n::before{background:var(--sunk)}
-.cta{max-width:860px;margin:0 auto;padding:0 20px 8px}
-.cta .box{background:var(--sunk);border:1px solid var(--rule);border-radius:8px;padding:20px 22px;text-align:center}
-.cta .box p{margin:0 0 12px}
-.cta a.btn{display:inline-block;background:var(--teal);color:var(--on-teal);text-decoration:none;font-weight:600;padding:11px 20px;border-radius:6px;margin:0 6px 6px}
-.cta a.ghost{display:inline-block;color:var(--teal);text-decoration:none;font-weight:600;padding:10px 18px;border:1px solid var(--teal);border-radius:6px;margin:0 6px 6px}
-@media(max-width:720px){.sitebar nav a:not(.pill){display:none}}
-@media(prefers-color-scheme:dark){
-:root{--ink:#ECE8DD;--muted:#A9A89E;--paper:#1B1A17;--rule:#3A3832;--teal:#4FB3BC;--green:#1F3A2B;--amber:#3A2D12;--red:#3F211D;--sunk:#24231F;--card:#201F1B;--teal-soft:#1E3436;--on-teal:#10201F}
-.item{background:var(--card)}
-}
-</style></head>
-<body><div class="sitebar"><div class="in">
+</style>
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="report.css">
+</head>
+<body>
+<header class="bar"><div class="wrap">
   <a class="brand" href="./" aria-label="Teem Array, overview">
     <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="3" cy="12" r="1.3"/><circle cx="7" cy="6" r="1.3"/><circle cx="12" cy="9.5" r="1.3"/><circle cx="13" cy="3" r="1.3"/><path d="M3.8 10.9 6.3 7.1M8.2 6.5l2.7 2.3M12.2 8.3l.6-3.9" fill="none"/></svg>
     <span>Teem Array</span>
   </a>
-  <nav aria-label="Site"><a href="./">&larr; Back to overview</a><a class="pill" href="mailto:murdic.work@gmail.com?subject=A%20conversation%20about%20Constellation">Talk to us</a></nav>
-</div></div>
-<div style="background:#FBEFD9;border:1px solid #d9d3c5;padding:10px 14px;margin:0;font:600 14px system-ui,sans-serif">SAMPLE REPORT: produced by the no-GPU demo with SCRIPTED findings on SYNTHETIC data. It shows the format, the checks and the verification, not model performance or any real customer result.</div><div class="ctx"><div class="box">
+  <nav class="nav" aria-label="Site"><a href="./">Back to overview</a><a class="pill" href="mailto:murdic.work@gmail.com?subject=A%20conversation%20about%20Constellation">Talk to us</a></nav>
+</div></header>
+<div class="sample-banner"><div class="in"><strong>SAMPLE REPORT</strong>: produced by the no-GPU demo with SCRIPTED findings on SYNTHETIC data. It shows the format, the checks and the verification, not model performance or any real customer result.</div></div><div class="ctx">
 <h2>What you are looking at</h2>
-<p>This is what a reviewer receives at the end of a job on Constellation: an <strong>evidence report</strong>. The AI proposes findings; this report shows, for each one, the exact passage of your policy and the exact log entries it relied on, whether plain code could find them, what was removed, and who signed off. It also ends with a fingerprint so anyone can re-check the result independently.</p>
-<p>Read it in this order:</p>
-<ul>
-<li><strong>Section 1 (Summary):</strong> one finding proposed, one held for a person, one removed automatically.</li>
-<li><strong>Section 2 (Findings):</strong> for each one, the sources it cites and the checks run on it. A finding that fails a check is never presented as true.</li>
-<li><strong>Section 3 (Removed):</strong> a finding the record contradicts, kept visible so the removal can be audited.</li>
-<li><strong>Section 5 (What was not checked):</strong> the limits, stated plainly.</li>
+<p>This is what a reviewer receives at the end of a job on Constellation: an evidence report. The AI proposes findings. For each one, the report shows the exact passage of your policy and the exact log entries it relied on, whether plain code could find them, what was removed, and who signed off. It ends with a fingerprint so anyone can re-check the result independently.</p>
+<ul class="read">
+<li><b>Summary</b><span>One finding proposed, one held for a person, one removed automatically.</span></li>
+<li><b>Findings</b><span>The sources each finding cites and the checks run on it. A finding that fails a check is never presented as true.</span></li>
+<li><b>Removed</b><span>A finding the record contradicts, kept visible so the removal can be audited.</span></li>
+<li><b>Not checked</b><span>The limits, stated plainly.</span></li>
 </ul>
 <div class="key"><span class="g">Check passed</span><span class="a">Held back for a person</span><span class="n">Not run, with the reason</span></div>
-<p class="muted small" style="margin-top:12px">This example is scripted on synthetic data. &ldquo;REC-003&rdquo; is a made-up record, &ldquo;analyst&rdquo; is a demo user, and no real organization or person appears. It shows the format and the checks, not model performance.</p>
-</div></div>
+<p class="fine">This example is scripted on synthetic data. REC-003 is a made-up record and "analyst" is a demo user. No real organization or person appears. It shows the format and the checks, not model performance.</p>
+</div>
 <main>
 <p class="muted small">Constellation evidence report</p>
 <h1>Access review of REC-003</h1>
@@ -114,8 +87,10 @@ judgment, not hidden. Section 5 says what was not checked.</div>
 <p><strong>All re-derivable checks passed.</strong></p><div class="row ok"><strong>Document fingerprint</strong>: Passed. The document hashes to the fingerprint recorded with it.</div><div class="row ok"><strong>Audit log chain</strong>: Passed. 18 entries, hash-chained and sealed; no entry edited, removed, inserted or reordered.</div><div class="row ok"><strong>Result is anchored in the log</strong>: Passed. The log head recorded in the result is an entry of this log.</div><div class="row ok"><strong>Document matches the sealed summary</strong>: Passed. The document&#x27;s fingerprint equals the one sealed into the log.</div><div class="row ok"><strong>Records and policies on disk</strong>: Passed. All 3 source file(s) are identical to the ones the run read.</div><div class="row ok"><strong>Quotations and cited events exist</strong>: Passed. 1 policy quotation(s) and 3 record event(s) were re-found in the sources.</div>
 <footer>This report is a rendering of the stored result. It is only as trustworthy as the checks listed above; re-run the verification against the source files rather than relying on this page.
 Generated by Constellation (Teem Array Inc.).</footer>
-</main><div class="cta"><div class="box">
-<p><strong>Want to see how this would look on your own records?</strong><br><span class="muted">We are looking for a small or rural hospital, or a firm that serves them, to evaluate the first agent on a de-identified sample. Fifteen minutes of advice is a good start.</span></p>
-<a class="btn" href="mailto:murdic.work@gmail.com?subject=A%20conversation%20about%20Constellation">Email Kayden Murdic</a><a class="ghost" href="./">Back to the overview</a>
-</div></div>
+</main><div class="endcta">
+<h2>See how this would look on your own records.</h2>
+<p>We are looking for a small or rural hospital, or a firm that serves them, to evaluate the first agent on a de-identified sample. Fifteen minutes of advice is a good start.</p>
+<div class="row2"><a class="btn" href="mailto:murdic.work@gmail.com?subject=A%20conversation%20about%20Constellation">Email Kayden Murdic</a><a class="btn ghost" href="./">Back to the overview</a></div>
+</div>
+<footer class="foot"><div class="wrap"><span>Teem Array Inc. &middot; Constellation is a product of Teem Array Inc.</span><span>This page makes no performance claims about real-world use.</span></div></footer>
 </body></html>
