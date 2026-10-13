@@ -103,6 +103,32 @@ h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; }
     .path::before { animation: spine linear both; animation-timeline: view(); animation-range: entry 20% cover 55%; }
   }
 }
+
+/* one thread through "What it is", "How it works" and "What a result carries" (wide screens) */
+@media (min-width: 861px) {
+  .thread { position: relative; }
+  .thread::before { content: ""; position: absolute; top: 115px; bottom: 84px; width: 1.5px; background: var(--teal); transform-origin: top;
+    left: calc(max(0px, (100% - 1080px) / 2) + 24px + (min(100%, 1080px) - 48px) * .4 + 45.4px); }
+  .thread .path::before { content: none; }
+  .thread .props { padding-left: 38px; }
+  .thread .props > div { position: relative; }
+  .thread .props > div::before { content: ""; position: absolute; left: -38px; top: 24px; width: 15px; height: 15px; border-radius: 50%; background: var(--paper); border: 2px solid var(--teal); }
+  .thread .tint .path li::before { background: var(--paper-2); }
+}
+@media (max-width: 860px) { .thread .props > div::before { content: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    @keyframes fadeonly { from { opacity: .3; } to { opacity: 1; } }
+    @keyframes lit { from { background-color: var(--paper); } to { background-color: var(--teal); } }
+    @keyframes litTint { from { background-color: var(--paper-2); } to { background-color: var(--teal); } }
+    @media (min-width: 861px) {
+      .thread::before { animation: spine linear both; animation-timeline: view(); animation-range: cover 10% cover 90%; }
+      .thread .props > div::before, .thread .path li::before { animation: lit linear both; animation-timeline: view(); animation-range: cover 42% cover 52%; }
+      .thread .tint .path li::before { animation-name: litTint; }
+    }
+    .thread .props dt, .thread .props dd, .thread .path h3, .thread .path p { animation: fadeonly linear both; animation-timeline: view(); animation-range: entry 0% entry 40%; }
+  }
+}
 </style>
 </head>
 <body>
@@ -176,13 +202,14 @@ h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; }
   </div>
 </div></section>
 
+<div class="thread">
 <section id="what"><div class="wrap split">
   <div class="head reveal">
     <span class="label">What it is</span>
     <h2 style="margin-top:12px">In plain terms.</h2>
     <p>No background needed. This is the short version of what Constellation is and who it is for.</p>
   </div>
-  <dl class="props reveal">
+  <dl class="props">
     <div><dt>What it is</dt><dd>Software that lets an AI do a real job on your own documents and records, and hands back the result together with proof. It runs on your own computers, so your data stays with you.</dd></div>
     <div><dt>How you can trust it</dt><dd>Nothing it says is taken on faith. Every quote and every cited record is checked by ordinary code against your original files. Anything it cannot back up is removed or held, and a person reviews and signs off.</dd></div>
     <div><dt>What it does today</dt><dd>One job: it reads a hospital's patient-record access log and its privacy policies, proposes findings about who accessed what, and shows the evidence behind each one. More jobs are meant to follow, chosen with the people who will use them.</dd></div>
@@ -198,10 +225,10 @@ h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; }
     <p>The agent proposes. Code and people do the rest.</p>
   </div>
   <ol class="path">
-    <li class="reveal"><h3>Ask in plain language</h3><p>The agent asks you when it is unsure, and uses the documents and records in your workspace.</p></li>
-    <li class="reveal"><h3>The agent does the job</h3><p>It works on your own hardware, so your data stays inside your environment.</p></li>
-    <li class="reveal"><h3>Code checks every claim</h3><p>Each quoted passage and each cited record entry is checked against your own files. A claim that cannot be found is marked or removed, not believed.</p></li>
-    <li class="reveal"><h3>A person decides</h3><p>Doubtful findings are held for a human. Every step is logged, and any result can be re-checked independently.</p></li>
+    <li><h3>Ask in plain language</h3><p>The agent asks you when it is unsure, and uses the documents and records in your workspace.</p></li>
+    <li><h3>The agent does the job</h3><p>It works on your own hardware, so your data stays inside your environment.</p></li>
+    <li><h3>Code checks every claim</h3><p>Each quoted passage and each cited record entry is checked against your own files. A claim that cannot be found is marked or removed, not believed.</p></li>
+    <li><h3>A person decides</h3><p>Doubtful findings are held for a human. Every step is logged, and any result can be re-checked independently.</p></li>
   </ol>
 </div></section>
 
@@ -211,7 +238,7 @@ h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; }
     <h2 style="margin-top:12px">Built so the answer can be checked, not just trusted.</h2>
     <p>These are properties of the design. Everything measured so far was measured on synthetic data.</p>
   </div>
-  <dl class="props reveal">
+  <dl class="props">
     <div><dt>Its sources</dt><dd>Each finding points to the policy passage and the record entries it rests on, so a reviewer can open the evidence directly.</dd></div>
     <div><dt>Claims checked by code</dt><dd>Verification is ordinary code, not a second opinion from the model. Quotes are matched word for word against your documents.</dd></div>
     <div><dt>A log that shows edits</dt><dd>Every step goes into a hash-chained log. In the sample report it holds <span class="mono">18 entries</span> and any edit, removal or reordering would show.</dd></div>
@@ -221,6 +248,8 @@ h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; }
     <div><dt>A named person</dt><dd>Results wait for sign-off from a named reviewer. The platform proposes; people decide.</dd></div>
   </dl>
 </div></section>
+
+</div>
 
 <section class="tint"><div class="wrap split">
   <div class="head reveal">
