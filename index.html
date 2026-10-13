@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="color-scheme" content="light dark">
 <title>Teem Array: AI that does the work, with results you can verify</title>
@@ -13,6 +13,7 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg fill='%230F5C63'%3E%3Ccircle cx='3' cy='12' r='1.3'/%3E%3Ccircle cx='7' cy='6' r='1.3'/%3E%3Ccircle cx='12' cy='9.5' r='1.3'/%3E%3Ccircle cx='13' cy='3' r='1.3'/%3E%3C/g%3E%3Cpath d='M3.8 10.9 6.3 7.1M8.2 6.5l2.7 2.3M12.2 8.3l.6-3.9' stroke='%230F5C63' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="site.css">
+<script src="site.js"></script>
 <style>
 section { padding-block: 84px; }
 section.tint { background: var(--paper-2); border-block: 1px solid var(--rule); }
@@ -140,28 +141,35 @@ h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; }
 .mark .s, .mark .h { transform-box: fill-box; transform-origin: center; }
 .closer .word { font: 600 clamp(36px, 5.2vw, 60px)/1 var(--font-display); letter-spacing: -0.015em; }
 .closer p { margin: 12px 0 18px; color: var(--muted); max-width: 30em; }
-@keyframes starIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-@keyframes glowIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes lineIn { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
-@keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(.6); } 50% { opacity: .16; transform: scale(1.2); } }
+@keyframes starLight { 0% { fill: var(--dim); transform: scale(1); } 55% { fill: var(--teal); transform: scale(1.7); } 100% { fill: var(--teal); transform: scale(1); } }
+@keyframes lineGo { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes flash { 0% { opacity: 0; transform: scale(.5); } 30% { opacity: .5; } 100% { opacity: 0; transform: scale(2.1); } }
+@keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(.7); } 50% { opacity: .14; transform: scale(1.15); } }
 @media (prefers-reduced-motion: no-preference) {
-  .mark .h { animation: twinkle 5.5s ease-in-out infinite; animation-delay: var(--t, 0s); }
-  @supports (animation-timeline: view()) {
-    .mark .l { stroke-dasharray: 1; }
-    .mark { view-timeline: --mark block; }
-    .mark .s, .mark .l { animation-timing-function: ease-out; animation-fill-mode: both; animation-timeline: --mark; }
-    .mark .s { animation-name: starIn; }
-    .mark .g { animation: glowIn linear both; animation-timeline: --mark; }
-    .mark .l { animation-name: lineIn; }
-    .mark .s1, .mark .g1 { animation-range: entry 20% entry 40%; }
-    .mark .l1 { animation-range: entry 36% entry 56%; }
-    .mark .s2, .mark .g2 { animation-range: entry 50% entry 64%; }
-    .mark .l2 { animation-range: entry 60% entry 78%; }
-    .mark .s3, .mark .g3 { animation-range: entry 72% entry 84%; }
-    .mark .l3 { animation-range: entry 80% entry 94%; }
-    .mark .s4, .mark .g4 { animation-range: entry 90% entry 100%; }
-  }
+  /* before the sequence: four dim stars, no lines. It starts when the mark is in view (site.js adds .go). */
+  .js .mark { --dim: color-mix(in srgb, var(--muted) 42%, var(--paper)); }
+  .js .mark .s { fill: var(--dim); }
+  .js .mark .l { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  .js .mark.go .s { animation: starLight .7s var(--d) cubic-bezier(.3, 1.2, .5, 1) forwards; }
+  .js .mark.go .l { animation: lineGo .62s var(--d) cubic-bezier(.45, 0, .25, 1) forwards; }
+  .js .mark.go .h { animation: flash 1s var(--d) ease-out backwards, twinkle 6s calc(var(--d) + 1.4s) ease-in-out infinite; }
 }
+
+/* status: filled ring with a check = in place, hollow ring = ahead (same language as the thread above) */
+.status { box-shadow: 0 24px 40px -34px rgba(0, 0, 0, .35); }
+.status > div { padding: 30px 32px 22px; }
+.status h3 { margin-bottom: 20px; }
+.ticks { list-style: none; margin: 0; padding: 0; }
+.ticks li { position: relative; padding: 0 0 20px 34px; margin: 0; font-size: 15.5px; line-height: 1.5; }
+.ticks li:last-child { padding-bottom: 6px; }
+.ticks li::before { content: ""; position: absolute; left: 0; top: 2px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--teal); box-sizing: border-box; }
+.ticks.done li::before { background: var(--teal); }
+.ticks.done li::after { content: ""; position: absolute; left: 5.5px; top: 5.5px; width: 4.5px; height: 8px; border: solid var(--on-teal); border-width: 0 2px 2px 0; transform: rotate(40deg) scale(.9); transform-origin: 70% 60%; box-sizing: border-box; }
+.ticks li strong { display: block; font: 600 17px/1.3 var(--font-display); margin-bottom: 2px; }
+.ticks li span { color: var(--muted); }
+.ticks.ahead li:not(:last-child)::after { content: ""; position: absolute; left: 7px; top: 22px; bottom: 4px; width: 0; border-left: 1.5px dotted var(--rule); }
+.ticks.done li:not(:last-child)::after { }
+@media (max-width: 760px) { .status > div { padding: 24px 22px 16px; } }
 </style>
 </head>
 <body>
@@ -305,21 +313,21 @@ h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; }
   <div class="status reveal">
     <div>
       <h3>Built and working</h3>
-      <ul>
-        <li>A working platform, end to end: workspaces, roles, sign-off and a tamper-evident log</li>
-        <li>A first agent, record access review, whose claims are checked by code</li>
-        <li>Evidence reports, and independent re-verification of any result</li>
-        <li>Measured results on synthetic test data, including the failures</li>
+      <ul class="ticks done">
+        <li><strong>A working platform, end to end</strong><span>Workspaces, roles, sign-off and a tamper-evident log.</span></li>
+        <li><strong>A first agent</strong><span>Record access review, with every claim checked by code.</span></li>
+        <li><strong>Evidence you can re-verify</strong><span>Reports that anyone can independently check later.</span></li>
+        <li><strong>Measured results on synthetic data</strong><span>Including the failures, which we report.</span></li>
+        <li><strong>A person always decides</strong><span>Nothing is approved without a named reviewer. That is a design choice, and it stays.</span></li>
       </ul>
     </div>
     <div>
       <h3>What comes next</h3>
-      <ul>
-        <li>The first evaluation on real records. Our results so far are on synthetic data, and we are choosing the first organization to measure it with.</li>
-        <li>No customers yet: we are early, and we are picking our first design partners with care.</li>
-        <li>No SOC 2 yet: we plan to begin it as customer engagements start.</li>
-        <li>More agents, added as customers need them.</li>
-        <li>A person always decides. That is a design choice, and it stays.</li>
+      <ul class="ticks ahead">
+        <li><strong>The first evaluation on real records</strong><span>Our results so far are on synthetic data. We are choosing the first organization to measure it with.</span></li>
+        <li><strong>No customers yet</strong><span>We are early, and we are picking our first design partners with care.</span></li>
+        <li><strong>No SOC 2 yet</strong><span>We plan to begin it as customer engagements start.</span></li>
+        <li><strong>More agents</strong><span>Added one at a time, as customers need them.</span></li>
       </ul>
     </div>
   </div>
@@ -339,11 +347,11 @@ h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; }
 
 <section class="closer" aria-label="Teem Array"><div class="wrap closer-in">
   <svg class="mark" viewBox="0 0 16 16" role="img" aria-label="Teem Array mark: four connected stars">
-    <g class="g g1"><circle class="h" style="--t:0s" cx="3" cy="12" r="2.4"/></g><g class="g g2"><circle class="h" style="--t:1.4s" cx="7" cy="6" r="2.4"/></g><g class="g g3"><circle class="h" style="--t:2.8s" cx="12" cy="9.5" r="2.4"/></g><g class="g g4"><circle class="h" style="--t:4.1s" cx="13" cy="3" r="2.4"/></g>
-    <path class="l l1" pathLength="1" d="M3.8 10.9 6.3 7.1"/>
-    <path class="l l2" pathLength="1" d="M8.2 6.5 10.9 8.8"/>
-    <path class="l l3" pathLength="1" d="M12.2 8.3 12.8 4.4"/>
-    <circle class="s s1" cx="3" cy="12" r="1.3"/><circle class="s s2" cx="7" cy="6" r="1.3"/><circle class="s s3" cx="12" cy="9.5" r="1.3"/><circle class="s s4" cx="13" cy="3" r="1.3"/>
+    <g><circle class="h" style="--d:0s" cx="3" cy="12" r="2.4"/></g><g><circle class="h" style="--d:1.05s" cx="7" cy="6" r="2.4"/></g><g><circle class="h" style="--d:2.1s" cx="12" cy="9.5" r="2.4"/></g><g><circle class="h" style="--d:3.15s" cx="13" cy="3" r="2.4"/></g>
+    <path class="l l1" style="--d:.45s" pathLength="1" d="M3.8 10.9 6.3 7.1"/>
+    <path class="l l2" style="--d:1.5s" pathLength="1" d="M8.2 6.5 10.9 8.8"/>
+    <path class="l l3" style="--d:2.55s" pathLength="1" d="M12.2 8.3 12.8 4.4"/>
+    <circle class="s s1" style="--d:0s" cx="3" cy="12" r="1.3"/><circle class="s s2" style="--d:1.05s" cx="7" cy="6" r="1.3"/><circle class="s s3" style="--d:2.1s" cx="12" cy="9.5" r="1.3"/><circle class="s s4" style="--d:3.15s" cx="13" cy="3" r="1.3"/>
   </svg>
   <div>
     <div class="word">Teem Array</div>
