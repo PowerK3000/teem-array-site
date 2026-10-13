@@ -212,9 +212,10 @@ h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; }
   <dl class="props">
     <div><dt>What it is</dt><dd>Software that lets an AI do a real job on your own documents and records, and hands back the result together with proof. It runs on your own computers, so your data stays with you.</dd></div>
     <div><dt>How you can trust it</dt><dd>Nothing it says is taken on faith. Every quote and every cited record is checked by ordinary code against your original files. Anything it cannot back up is removed or held, and a person reviews and signs off.</dd></div>
-    <div><dt>What it does today</dt><dd>One job: it reads a hospital's patient-record access log and its privacy policies, proposes findings about who accessed what, and shows the evidence behind each one. More jobs are meant to follow, chosen with the people who will use them.</dd></div>
-    <div><dt>Who it is for</dt><dd>Privacy, compliance and security teams at small and community hospitals, and the firms that serve those hospitals.</dd></div>
-    <div><dt>What it is not</dt><dd>Not a chatbot, not a service that takes your data into someone else's cloud (that is off unless you choose it), and not something that makes decisions for you.</dd></div>
+    <div><dt>What is built</dt><dd>The working platform, end to end: separate workspaces for each job, roles and sign-off, a conversation where the agent asks you questions, a log that shows any edit, and evidence reports anyone can re-verify. Its first agent reviews who accessed patient records against a hospital's own privacy policies, turning a mass of log lines into findings with their evidence attached.</dd></div>
+    <div><dt>Where it is going</dt><dd>One platform for any job that depends on documents and records. More agents are added one at a time, with the people who will use them, and each one earns trust against checks you can see.</dd></div>
+    <div><dt>Who it is for</dt><dd>Hospitals first: privacy, compliance and security teams at small and community hospitals, and the firms that serve them. The platform itself is built for any team that needs AI work it can prove.</dd></div>
+    <div><dt>What sets it apart</dt><dd>A general chatbot gives you an answer. Constellation gives you the answer, the sources, the checks and a replayable log, keeps your data on your own computers by default, and leaves the decision to a person.</dd></div>
   </dl>
 </div></section>
 
@@ -259,7 +260,7 @@ h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; }
   <div class="reveal">
     <p>The first agent we built and tested compares access to patient records against a hospital's own privacy policies. It produces an evidence report an examiner could read: each finding, the policy text it rests on, the log events behind it, what was checked and what was not, and who signed off.</p>
     <p>The same platform is meant for other jobs as you need them, and each agent earns trust separately.</p>
-    <p>We are looking for a small or rural hospital, or a firm that serves them, to evaluate it on a de-identified sample, with scope and success measures agreed beforehand. You see measured results on your own cases, including where the tool falls short.</p>
+    <p>We are looking for a small or rural hospital, or a firm that serves them, to evaluate it on a de-identified sample, with scope and success measures agreed beforehand. You see exactly what it found, what it missed and why, on your own cases.</p>
     <a class="btn" href="sample-evidence-report.html">Read the sample evidence report</a>
     <p class="muted" style="margin:12px 0 0;font-size:14px">Scripted example on synthetic data.</p>
   </div>
@@ -267,25 +268,25 @@ h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; }
 
 <section id="status"><div class="wrap">
   <span class="label">Where we are</span>
-  <h2 style="margin:12px 0 28px;max-width:20em">Early, and specific about what is and is not proven.</h2>
+  <h2 style="margin:12px 0 28px;max-width:20em">Built and working. Next: real data.</h2>
   <div class="status reveal">
     <div>
-      <h3>Built and tested</h3>
+      <h3>Built and working</h3>
       <ul>
-        <li>A working platform with workspaces, roles and an audit log</li>
-        <li>One agent (record access review) whose claims are checked by code</li>
-        <li>Evidence reports, and independent re-verification of results</li>
-        <li>Measured results on synthetic test data</li>
+        <li>A working platform, end to end: workspaces, roles, sign-off and a tamper-evident log</li>
+        <li>A first agent, record access review, whose claims are checked by code</li>
+        <li>Evidence reports, and independent re-verification of any result</li>
+        <li>Measured results on synthetic test data, including the failures</li>
       </ul>
     </div>
     <div>
-      <h3>What we do not claim yet</h3>
+      <h3>What comes next</h3>
       <ul>
-        <li>Our results so far are on synthetic data. We have not measured the system on any organization's real data.</li>
-        <li>We have no customers yet. We are an early-stage company.</li>
-        <li>No SOC 2 yet, and no other certification.</li>
-        <li>One agent is built. Others come as customers need them.</li>
-        <li>A person always decides. Nothing here is autonomous.</li>
+        <li>The first evaluation on real records. Our results so far are on synthetic data, and we are choosing the first organization to measure it with.</li>
+        <li>No customers yet: we are early, and we are picking our first design partners with care.</li>
+        <li>No SOC 2 yet: we plan to begin it as customer engagements start.</li>
+        <li>More agents, added as customers need them.</li>
+        <li>A person always decides. That is a design choice, and it stays.</li>
       </ul>
     </div>
   </div>
@@ -307,7 +308,7 @@ h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; }
 
 <footer class="foot"><div class="wrap">
   <span>Teem Array Inc. &middot; Constellation is a product of Teem Array Inc.</span>
-  <span>This page makes no performance claims about real-world use.</span>
+  <span>Results shown here come from synthetic test data.</span>
 </div></footer>
 </body>
 </html>
